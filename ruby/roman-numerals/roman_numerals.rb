@@ -4,25 +4,21 @@ end
 
 class Fixnum
   def to_roman
-    concat_romans(self)
+    result = ''
+    remaining = self
+
+    while remaining > 0
+      result += max_remaining_value(remaining)
+      remaining -= max_remaining_key(remaining)
+    end
+
+    result
   end
 
   private
 
-  def concat_romans(remaining)
-    result = ''
-
-    while remaining > 0
-      result += max_remaining_value(remaining)
-      if max_remaining_key(remaining) == remaining
-        return result
-      end
-      remaining -= max_remaining_key(remaining)
-    end
-  end
-
-  def max_remaining_key(remaning)
-    Fixnum.roman_numeral_keys.detect { |i| i <= remaning }
+  def max_remaining_key(remaining)
+    Fixnum.roman_numeral_keys.detect { |i| i <= remaining }
   end
 
   def max_remaining_value(remaining)
