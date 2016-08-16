@@ -8,12 +8,13 @@ class Fixnum
   def concat_romans(remaining)
     result = ''
 
-    while max_remaining_key(remaining) <= remaining
+    while remaining > 0
       result += max_remaining_value(remaining)
-      concat_romans(remaining - 1)
+      if max_remaining_key(remaining) == remaining
+        return result
+      end
+      remaining -= 1
     end
-
-    result
   end
 
   def max_remaining_key(remaning)
@@ -40,6 +41,7 @@ class Fixnum
       40 => "XL",
       10 => "X",
       9 => "IX",
+      6 => "VI",
       5 => "V",
       4 => "IV",
       1 => "I",
