@@ -1,3 +1,7 @@
+module BookKeeping
+  VERSION = 2
+end
+
 class Fixnum
   def to_roman
     concat_romans(self)
@@ -13,7 +17,7 @@ class Fixnum
       if max_remaining_key(remaining) == remaining
         return result
       end
-      remaining -= 1
+      remaining -= max_remaining_key(remaining)
     end
   end
 
