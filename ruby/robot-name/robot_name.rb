@@ -24,12 +24,15 @@ class Robot
   end
 
   def self.register_name(name)
-    @@names << name
+    names << name
   end
 
   def self.name_available?(name)
     return false if name.to_s.empty?
+    !names.include? name
+  end
+
+  def self.names
     @@names ||= []
-    !@@names.include? name
   end
 end
