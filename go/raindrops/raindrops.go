@@ -1,7 +1,25 @@
 package raindrops
 
+import "fmt"
+
 const testVersion = 2
 
-func Convert(int) string
+// Convert a number to a string that depends on the numbers factors
+func Convert(number int) string {
+	var result = ""
 
-// The test program has a benchmark too.  How fast does your Convert convert?
+	if number%3 == 0 {
+		result += "Pling"
+	}
+	if number%5 == 0 {
+		result += "Plang"
+	}
+	if number%7 == 0 {
+		result += "Plong"
+	}
+	if result == "" {
+		result = fmt.Sprint(number)
+	}
+
+	return result
+}
